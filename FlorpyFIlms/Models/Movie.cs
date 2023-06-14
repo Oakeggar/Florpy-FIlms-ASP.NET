@@ -12,6 +12,6 @@ namespace FlorpyFIlms.Models
         public string FilmDescr { get; set; }
         public string FilmPictureURL{ get; set; }
         public int FilmPrice { get; set; }
-        public FilmCategory FIlmCategory { get; set; }
+        public FilmCategory FilmCategory { get; set; }
     }
 }

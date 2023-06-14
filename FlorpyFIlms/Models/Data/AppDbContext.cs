@@ -8,5 +8,6 @@ namespace FlorpyFIlms.Models.Data
         {
             
         }
+        public DbSet<Movie> Movies { get; set; }  
     }
 }
