@@ -19,9 +19,9 @@ namespace FlorpyFIlms.Models.Data
                     {
                         new Movie()
                         {
-                            FilmName = "The Ritual",
-                            FilmDescr = "Reuniting after the tragic death of their friend, four college pals set out to hike through the Scandinavian wilderness. A wrong turn leads them into the mysterious forests of Norse legend, where an ancient evil exists and stalks them at every turn.",
-                            FilmPictureURL = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQcPrzfxMfgHr_eB1Nn6aWjmGpauBKHb9z58DDRUgOZU88k-0U0",
+                            FilmName = "Shining",
+                            FilmDescr = "Jack and his family move into an isolated hotel with a violent past. Living in isolation, Jack begins to lose his sanity, which affects his family members.",
+                            FilmPictureURL = "https://m.media-amazon.com/images/I/81nwnHTcV2L._AC_UF1000,1000_QL80_.jpg",
                             FilmPrice = 20,
                             FilmCategory = FilmCategory.Horror
                         },

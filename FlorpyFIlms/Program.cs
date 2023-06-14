@@ -1,4 +1,5 @@
 using FlorpyFIlms.Models.Data;
+using FlorpyFIlms.Models.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\PokerCat\\Desktop\\films.mdl.mdf;Integrated Security=True;Connect Timeout=30"));
-
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,20 +1,21 @@
 ﻿using FlorpyFIlms.Models.Data;
+using FlorpyFIlms.Models.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlorpyFIlms.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IMoviesService _service;
 
-        public MoviesController(AppDbContext context)
+        public MoviesController(IMoviesService service)
         {
-            _context = context;
+			_service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = _context.Movies.ToList();
+            var allMovies = await _service.GetAll();
             return View(allMovies);
         }
     }
