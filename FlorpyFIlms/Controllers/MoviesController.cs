@@ -18,5 +18,10 @@ namespace FlorpyFIlms.Controllers
             var allMovies = await _service.GetAll();
             return View(allMovies);
         }
+        //Movies Create
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
