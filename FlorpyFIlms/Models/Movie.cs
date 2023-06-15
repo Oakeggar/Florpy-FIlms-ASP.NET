@@ -7,11 +7,15 @@ namespace FlorpyFIlms.Models
     {
         [Key]
         public int Id { get; set; }
-
+        [Required(ErrorMessage = "Name is required")]
         public string FilmName { get; set; }
-        public string FilmDescr { get; set; }
-        public string FilmPictureURL{ get; set; }
-        public int FilmPrice { get; set; }
-        public FilmCategory FilmCategory { get; set; }
+		[Required(ErrorMessage = "Description is required")]
+		public string FilmDescr { get; set; }
+		[Required(ErrorMessage = "Picture is required")]
+		public string FilmPictureURL{ get; set; }
+		[Required(ErrorMessage = "Price is required")]
+		public int FilmPrice { get; set; }
+		[Required(ErrorMessage = "Category is required")]
+		public FilmCategory FilmCategory { get; set; }
     }
 }

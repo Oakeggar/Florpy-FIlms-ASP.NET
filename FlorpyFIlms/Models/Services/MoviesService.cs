@@ -12,7 +12,8 @@ namespace FlorpyFIlms.Models.Services
 		}
 		public void Add(Movie movie)
 		{
-			throw new NotImplementedException();
+			_context.Movies.Add(movie);
+			_context.SaveChanges();
 		}
 
 		public void Delete(int id)

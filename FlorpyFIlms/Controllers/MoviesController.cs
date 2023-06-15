@@ -1,4 +1,5 @@
-﻿using FlorpyFIlms.Models.Data;
+﻿using FlorpyFIlms.Models;
+using FlorpyFIlms.Models.Data;
 using FlorpyFIlms.Models.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,17 @@ namespace FlorpyFIlms.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FilmName, FilmDescr, FilmPictureURL, FilmPrice, FilmCategory")]Movie movie)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(movie);
+            }
+            _service.Add(movie);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
