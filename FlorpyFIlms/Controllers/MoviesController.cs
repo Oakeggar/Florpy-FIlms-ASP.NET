@@ -16,7 +16,7 @@ namespace FlorpyFIlms.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _service.GetAll();
+            var allMovies = await _service.GetAllAsync();
             return View(allMovies);
         }
         //Movies Create
@@ -32,8 +32,48 @@ namespace FlorpyFIlms.Controllers
             {
                 return View(movie);
             }
-            _service.Add(movie);
+            await _service.AddAsync(movie);
             return RedirectToAction(nameof(Index));
         }
-    }
+
+		//Movies Details
+		public async Task<IActionResult> Details(int id)
+		{
+			var movieDetails = await _service.GetByIdAsync(id);
+			return View(movieDetails);
+		}
+
+		//Movies Edit
+		public async Task<IActionResult> Edit(int id)
+		{
+			var movieDetails = await _service.GetByIdAsync(id);
+			return View(movieDetails);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(int id, [Bind("Id, FilmName, FilmDescr, FilmPictureURL, FilmPrice, FilmCategory")] Movie movie)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(movie);
+			}
+			await _service.UpdateAsync(id, movie);
+			return RedirectToAction(nameof(Index));
+		}
+
+		//Movie Delete
+		public async Task<IActionResult> Delete(int id)
+		{
+			var movieDetails = await _service.GetByIdAsync(id);
+			return View(movieDetails);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+			var movieDetails = await _service.GetByIdAsync(id);
+			await _service.DeleteAsync(id);
+			return RedirectToAction(nameof(Index));
+		}
+	}
 }

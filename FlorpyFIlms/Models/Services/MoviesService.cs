@@ -10,31 +10,36 @@ namespace FlorpyFIlms.Models.Services
 		{
 			_context = context;
 		}
-		public void Add(Movie movie)
+		public async Task AddAsync(Movie movie)
 		{
-			_context.Movies.Add(movie);
-			_context.SaveChanges();
+			await _context.Movies.AddAsync(movie);
+			await _context.SaveChangesAsync();
 		}
 
-		public void Delete(int id)
+		public async Task DeleteAsync(int id)
 		{
-			throw new NotImplementedException();
+			var result = await _context.Movies.FirstOrDefaultAsync(x => x.Id == id);
+			_context.Movies.Remove(result);
+			await _context.SaveChangesAsync();
 		}
 
-		public async Task<IEnumerable<Movie>> GetAll()
+		public async Task<IEnumerable<Movie>> GetAllAsync()
 		{
 			var results = await _context.Movies.ToListAsync();
 			return results;
 		}
 
-		public Movie GetById(int id)
+		public async Task<Movie> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			var results= await _context.Movies.FirstOrDefaultAsync(n => n.Id == id);
+			return results;
 		}
 
-		public Movie Update(int id, Movie newMovie)
+		public async Task<Movie> UpdateAsync(int id, Movie newMovie)
 		{
-			throw new NotImplementedException();
+			_context.Update(newMovie);
+			await _context.SaveChangesAsync();
+			return newMovie;
 		}
 	}
 }
